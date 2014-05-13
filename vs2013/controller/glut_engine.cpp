@@ -9,10 +9,18 @@
 
 using namespace controller;
 
-#ifdef _WIN32
-#define CHECKPOINT(msg) fprintf(stderr, "%s: checkpoint " msg "\n", __func__)
+
+static void checkpoint_helper(const char *function, const char *msg)
+{
+    fprintf(stderr, "%s: checkpoint %s\n", function, msg);
+}
+
+#ifdef __GNUC__
+#define CHECKPOINT(msg) checkpoint_helper(__PRETTY_FUNCTION__, msg)
+#elif defined(_WIN32)
+#define CHECKPOINT(msg) checkpoint_helper(__FUNCSIG__, msg)
 #else
-#define CHECKPOINT(msg) fprintf(stderr, "%s: checkpoint " msg "\n", __PRETTY_FUNCTION__)
+#define CHECKPOINT(msg) checkpoint_helper(__func__, msg)
 #endif
 
 
