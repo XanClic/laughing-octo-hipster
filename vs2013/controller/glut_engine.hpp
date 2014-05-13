@@ -12,6 +12,9 @@ class GlutEngine:
 public:
     virtual void init(int &argc, char **argv) final;
     virtual void run(void) final;
+
+private:
+    bool instance = false;
 };
 
 }

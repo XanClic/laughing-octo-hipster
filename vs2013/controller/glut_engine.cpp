@@ -15,21 +15,20 @@ using namespace controller;
 #define CHECKPOINT(msg) fprintf(stderr, "%s: checkpoint " msg "\n", __PRETTY_FUNCTION__)
 #endif
 
-static bool initialized;
-
 
 void GlutEngine::init(int &argc, char **argv)
 {
-    if (initialized) {
+    if (instance)
         throw std::logic_error("GlutEngine::init: GlutEngine already initialized");
-    }
 
+    glutInitDisplayMode(GLUT_DOUBLE | GLUT_DEPTH | GLUT_RGB);
+    glutInitWindowSize(640, 480);
     glutInit(&argc, argv);
     // By enabling this, the Window tries to delete itself after the main loop
     // has finished execution. GLUT does not like that.
     // glutSetOption(GLUT_ACTION_ON_WINDOW_CLOSE, GLUT_ACTION_CONTINUE_EXECUTION);
 
-    initialized = true;
+    instance = true;
 
     CHECKPOINT("post-init");
 }
@@ -37,7 +36,7 @@ void GlutEngine::init(int &argc, char **argv)
 
 void GlutEngine::run(void)
 {
-    if (!initialized)
+    if (!instance)
         throw std::logic_error("GlutEngine::run: GlutEngine not yet initialized");
 
     CHECKPOINT("pre-loop");
