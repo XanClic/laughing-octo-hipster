@@ -133,3 +133,11 @@ UpgradeLog*.htm
 # SQL Server files
 App_Data/*.mdf
 App_Data/*.ldf
+
+
+###########
+## KDevelop
+###########
+
+.kdev4
+build/
