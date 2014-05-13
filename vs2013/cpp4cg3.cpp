@@ -1,13 +1,22 @@
 #ifdef _WIN32
 #include <tchar.h>
 #endif
-#include "GL/freeglut.h"
+
+#include <cstdio>
+#include <memory>
+#include "controller/glut_engine.hpp"
+
 
 #ifdef _WIN32
 int _tmain(int argc, _TCHAR* argv[]) {
 #else
-int main(int argc, char *argv[]) {
+int main(int argc, char *argv[])
+{
 #endif
-	glutInit(&argc, argv);
-	return 0;
+    std::shared_ptr<controller::Engine> game_engine(new controller::GlutEngine);
+
+    game_engine->init(argc, argv);
+    game_engine->run();
+
+    return 0;
 }
