@@ -1,14 +1,16 @@
-#include "Window.hpp"
+#include <cstdlib>
 
 #include "GL/freeglut.h"
+#include "view/window.hpp"
+
 
 using namespace view;
 
 
 Window::Window(size_t width, size_t height, const std::string &name):
+    _name(name),
     _width(width),
-    _height(height),
-    _name(name)
+    _height(height)
 {
     glutInitWindowSize(width, height);
     _glut_win_id = glutCreateWindow(name.c_str());
@@ -16,6 +18,8 @@ Window::Window(size_t width, size_t height, const std::string &name):
     glutDisplayFunc(&glutDisplay);
     glutReshapeFunc(&glutReshape);
     glutKeyboardFunc(&glutKeyboard);
+
+    glViewport(0, 0, width, height);
 
     glutSetWindowData(this);
 }
@@ -44,7 +48,7 @@ void Window::reshape(void)
 void Window::keyboard(unsigned char key)
 {
     if (key == 'q')
-        delete this;
+        glutLeaveMainLoop();
 }
 
 
@@ -75,6 +79,9 @@ void Window::glutReshape(int width, int height)
     if (inst && (inst->_glut_win_id == glutGetWindow())) {
         inst->_width = width;
         inst->_height = height;
+
+        glViewport(0, 0, width, height);
+
         inst->reshape();
     }
 }
