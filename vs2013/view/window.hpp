@@ -1,5 +1,5 @@
-#ifndef WINDOW_HPP
-#define WINDOW_HPP
+#ifndef VIEW__WINDOW_HPP
+#define VIEW__WINDOW_HPP
 
 #include <cstddef>
 #include <string>
