@@ -7,10 +7,11 @@ Die Antworten sind spontan ohne Überprüfung, also sehr wahrscheinlich falsch. Sp
 
 3.5.2
 
-Zweite Variante glClear?
-k.A. mom
+Zweite Variante: Timer, der eine statische Redrawfunktion in festgegebenen Intervallen aufruft
+PostRedisplay(): + Aufruf mit minimalem Intervall; - FPS nicht trivial anzpuassen
+Timer: + Intervall frei einstellbar; - Intervall ist eingestellt, wenn an 60 FPS angepasst, dann funktioniert es nicht mit 120 FPS auf einem 120-FPS-System
 
 3.5.3
 
-1 Klasse: + Speicher,  - Flexibilität
-mehrere Klassen: + Austauschbarkeit/Lesbarkeit, - Speicher
+1 Klasse: + Speicher, alles an einer Stelle;  - Flexibilität
+mehrere Klassen: + Austauschbarkeit/Lesbarkeit, Trennung zwischen Model und Controller; - Speicher, Meshcode verteilt
