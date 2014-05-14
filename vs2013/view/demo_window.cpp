@@ -30,11 +30,10 @@ bool view::DemoWindow::display(void)
 	std::chrono::steady_clock::time_point tp_now = std::chrono::steady_clock::now();
     //std::chrono::time_point<std::chrono::steady_clock> tp_now = std::chrono::steady_clock::now(); // VS kann damit nicht umgehen.
 
-	std::chrono::duration<float> time_diff = std::chrono::duration_cast<std::chrono::duration<double>>(tp_now - tp_start);
+	std::chrono::duration<float> time_diff = std::chrono::duration_cast<std::chrono::duration<double>>(tp_now - tp_start); // Um fancy zu sein, std::ratio<5, 360> als zweiten std::chrono::duration tpl Param nutzen.
 
     glRotatef(time_diff.count() / 5 * 360, 0.f, 0.f, 1.f);
-
-
+	
     glColor3f(.75f, .75f, .75f);
 
 #if 1
@@ -55,7 +54,7 @@ bool view::DemoWindow::display(void)
     glVertex3i( 1, -1, -1); glVertex3i( 1, -1,  1);
     glEnd();
 #else
-    glutWireCube(2.);
+	glutWireCube(2.); //glutWireTeapot(2.);
 #endif
 
 

@@ -30,7 +30,7 @@ private:
     // make sure this window is the current GLUT window
     void ensureCurrent(void) const;
 
-    static void glutDisplay(void);
+    static void glutDisplay(void); // Da statisch, brauche ich keinen extra Pointer (Einsprungadresse der Klasse ist klar, es gibt ja keine weiteren Instanzen).
     static void glutReshape(int width, int height);
     static void glutKeyboard(unsigned char glut_key, int mouse_x, int mouse_y);
     static void glutClose(void);

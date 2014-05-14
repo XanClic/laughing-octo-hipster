@@ -72,7 +72,7 @@ void Window::glutDisplay(void)
     if (inst && (inst->_glut_win_id == glutGetWindow()))
         redisplay = inst->display();
 
-    glutSwapBuffers();
+	glutSwapBuffers(); // Führt auch glFlush() aus, deswegen gehts auch mit GLUT_SINGLE.
 
     if (redisplay)
         glutPostRedisplay();
