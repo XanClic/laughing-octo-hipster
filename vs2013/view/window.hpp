@@ -24,6 +24,7 @@ protected:
     virtual bool display(void);
     virtual void reshape(void);
     virtual void keyboard(unsigned char key);
+    virtual void close(void);
 
 private:
     // make sure this window is the current GLUT window
@@ -32,11 +33,13 @@ private:
     static void glutDisplay(void);
     static void glutReshape(int width, int height);
     static void glutKeyboard(unsigned char glut_key, int mouse_x, int mouse_y);
+    static void glutClose(void);
 
     std::string _name;
     size_t      _width;
     size_t      _height;
     int         _glut_win_id;
+    bool        _opened = true;
 }; // Window
 
 } // view::

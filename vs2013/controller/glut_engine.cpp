@@ -32,9 +32,7 @@ void GlutEngine::init(int &argc, char **argv)
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_DEPTH | GLUT_RGB);
     glutInitWindowSize(640, 480);
     glutInit(&argc, argv);
-    // By enabling this, the Window tries to delete itself after the main loop
-    // has finished execution. GLUT does not like that.
-    // glutSetOption(GLUT_ACTION_ON_WINDOW_CLOSE, GLUT_ACTION_CONTINUE_EXECUTION);
+    glutSetOption(GLUT_ACTION_ON_WINDOW_CLOSE, GLUT_ACTION_CONTINUE_EXECUTION);
 
     instance = true;
 
@@ -51,8 +49,6 @@ void GlutEngine::run(void)
 
     std::shared_ptr<view::Window> window(new view::DemoWindow(500, 500, "cpp4cg3-window"));
     glutMainLoop();
-
-    // Only reached if GLUT_ACTION_CONTINUE_EXECUTION has been enabled in init()
 
     CHECKPOINT("post-loop");
 }
