@@ -18,6 +18,7 @@ Window::Window(size_t width, size_t height, const std::string &name):
     glutDisplayFunc(&glutDisplay);
     glutReshapeFunc(&glutReshape);
     glutKeyboardFunc(&glutKeyboard);
+    glutCloseFunc(&glutClose);
 
     glViewport(0, 0, width, height);
 
@@ -26,7 +27,8 @@ Window::Window(size_t width, size_t height, const std::string &name):
 
 Window::~Window(void)
 {
-    glutDestroyWindow(_glut_win_id);
+    if (_opened)
+        glutDestroyWindow(_glut_win_id);
 }
 
 
@@ -47,8 +49,12 @@ void Window::reshape(void)
 
 void Window::keyboard(unsigned char key)
 {
-    if (key == 'q')
-        glutLeaveMainLoop();
+    if ((key == 'q') && _opened)
+        glutDestroyWindow(_glut_win_id);
+}
+
+void Window::close(void)
+{
 }
 
 
@@ -92,4 +98,15 @@ void Window::glutKeyboard(unsigned char key, int x, int y)
 
     if (inst && (inst->_glut_win_id == glutGetWindow()))
         inst->keyboard(key);
+}
+
+void Window::glutClose(void)
+{
+    Window *inst = static_cast<Window *>(glutGetWindowData());
+
+    if (inst && (inst->_glut_win_id == glutGetWindow())) {
+        inst->close();
+
+        inst->_opened = false;
+    }
 }
