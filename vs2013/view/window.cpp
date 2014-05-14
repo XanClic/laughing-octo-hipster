@@ -60,7 +60,7 @@ void Window::ensureCurrent(void) const
 
 void Window::glutDisplay(void)
 {
-    Window *inst = reinterpret_cast<Window *>(glutGetWindowData());
+    Window *inst = static_cast<Window *>(glutGetWindowData());
     bool redisplay = false;
 
     if (inst && (inst->_glut_win_id == glutGetWindow()))
@@ -74,7 +74,7 @@ void Window::glutDisplay(void)
 
 void Window::glutReshape(int width, int height)
 {
-    Window *inst = reinterpret_cast<Window *>(glutGetWindowData());
+    Window *inst = static_cast<Window *>(glutGetWindowData());
 
     if (inst && (inst->_glut_win_id == glutGetWindow())) {
         inst->_width = width;
@@ -88,7 +88,7 @@ void Window::glutReshape(int width, int height)
 
 void Window::glutKeyboard(unsigned char key, int x, int y)
 {
-    Window *inst = reinterpret_cast<Window *>(glutGetWindowData());
+    Window *inst = static_cast<Window *>(glutGetWindowData());
 
     if (inst && (inst->_glut_win_id == glutGetWindow()))
         inst->keyboard(key);
