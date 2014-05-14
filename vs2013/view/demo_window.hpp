@@ -16,7 +16,8 @@ private:
     virtual bool display(void) final;
     virtual void reshape(void) final;
 
-    std::chrono::time_point<std::chrono::steady_clock> tp_start;
+	std::chrono::steady_clock::time_point tp_start;
+    //std::chrono::time_point<std::chrono::steady_clock> tp_start;  // VS kann damit nicht umgehen.
 };
 
 }
