@@ -1,7 +1,7 @@
 #include <chrono>
 
 #include "GL/freeglut.h"
-#include "view/demo_window.hpp"
+#include "demo_window.hpp" //#include "view/demo_window.hpp"
 
 
 using namespace view;

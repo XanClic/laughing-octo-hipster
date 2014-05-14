@@ -85,7 +85,16 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="controller\glut_engine.cpp" />
     <ClCompile Include="cpp4cg3.cpp" />
+    <ClCompile Include="view\demo_window.cpp" />
+    <ClCompile Include="view\window.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="controller\engine.hpp" />
+    <ClInclude Include="controller\glut_engine.hpp" />
+    <ClInclude Include="view\demo_window.hpp" />
+    <ClInclude Include="view\window.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

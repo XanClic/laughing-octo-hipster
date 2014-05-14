@@ -1,7 +1,7 @@
 #ifndef CONTROLLER__GLUT_ENGINE_HPP
 #define CONTROLLER__GLUT_ENGINE_HPP
 
-#include "controller/engine.hpp"
+#include "engine.hpp" //#include "controller/engine.hpp"
 
 namespace controller
 {

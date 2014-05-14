@@ -1,7 +1,7 @@
 #include <cstdlib>
 
 #include "GL/freeglut.h"
-#include "view/window.hpp"
+#include "window.hpp" //#include "view/window.hpp"
 
 
 using namespace view;

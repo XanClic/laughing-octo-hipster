@@ -3,8 +3,8 @@
 #include <memory>
 
 #include "GL/freeglut.h"
-#include "controller/glut_engine.hpp"
-#include "view/demo_window.hpp"
+#include "glut_engine.hpp" //#include "controller/glut_engine.hpp"
+#include "../view/demo_window.hpp" //#include "view/demo_window.hpp"
 
 
 using namespace controller;
